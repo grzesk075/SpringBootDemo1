@@ -53,12 +53,14 @@ public class DemoApplication {
     @Bean
     CommandLineRunner jpademo(CustomerRepository repository) {
         return (args) -> {
-            repository.save(new Customer("Alan", "Walker"));
-            repository.save(new Customer("Jack", "Bauer"));
-            repository.save(new Customer("Chloe", "O'Brian"));
-            repository.save(new Customer("Kim", "Bauer"));
-            repository.save(new Customer("David", "Palmer"));
-            repository.save(new Customer("Michelle", "Dessler"));
+            if (repository.count() == 0) {
+                repository.save(new Customer("Alan", "Walker"));
+                repository.save(new Customer("Jack", "Bauer"));
+                repository.save(new Customer("Chloe", "O'Brian"));
+                repository.save(new Customer("Kim", "Bauer"));
+                repository.save(new Customer("David", "Palmer"));
+                repository.save(new Customer("Michelle", "Dessler"));
+            }
 
             LOG.info("Customers found with findAll():");
             LOG.info("-------------------------------");
