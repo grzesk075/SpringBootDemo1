@@ -1,0 +1,1 @@
+docker run --name mysql-client --rm -it mysql:latest mysql -h192.168.99.101 -uspring -p

@@ -1,0 +1,1 @@
+docker run --name SpringBootDemo1Mysql --rm -e MYSQL_ROOT_PASSWORD=grzesiek -e MYSQL_DATABASE=springdemo -e MYSQL_USER=spring -e MYSQL_PASSWORD=spring -v SpringBootDemo1Data:/var/lib/mysql -p 3306:3306 -d mysql:latest
