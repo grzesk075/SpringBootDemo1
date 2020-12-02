@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 /**
- * Hypermedia-based RESTful front end and a JPA-based back end.
+ * Hypermedia-based (so called Hypermedia-driven) RESTful front end and a JPA-based back end.
  * At runtime, Spring Data REST automatically creates an implementation of this interface.
  * Then it uses the @RepositoryRestResource annotation to direct Spring MVC to create RESTful endpoints at /people.
  * @RepositoryRestResource is not required for a repository to be exported.
