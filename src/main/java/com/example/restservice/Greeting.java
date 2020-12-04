@@ -6,7 +6,7 @@ public class Greeting {
 
     private final long id;
 
-    @JsonIgnore
+    //@JsonIgnore
     private final String content;
 
     public G1 getG() {
