@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Person {
+public class PhoneHolder {
 
     @Id
     @GeneratedValue
@@ -15,11 +15,11 @@ public class Person {
     @Column(length = 64, nullable = false)
     private String fullName;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "phoneHolder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones = new ArrayList<>();
 
 
-    public Person() {
+    public PhoneHolder() {
     }
 
 
@@ -39,12 +39,22 @@ public class Person {
         this.fullName = fullName;
     }
 
+    public void addPhone(Phone phone) {
+        phones.add(phone);
+        phone.setPhoneHolder(this);
+    }
+
+    public void removePhone(Phone phone) {
+        phones.remove(phone);
+        phone.setPhoneHolder(null);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Person)) return false;
-        Person person = (Person) o;
-        return getFullName().equals(person.getFullName()) && phones.equals(person.phones);
+        if (!(o instanceof PhoneHolder)) return false;
+        PhoneHolder phoneHolder = (PhoneHolder) o;
+        return getFullName().equals(phoneHolder.getFullName()) && phones.equals(phoneHolder.phones);
     }
 
     @Override

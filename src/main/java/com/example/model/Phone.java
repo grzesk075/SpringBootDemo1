@@ -17,7 +17,7 @@ public class Phone {
     private String number;
 
     @ManyToOne
-    private Person person;
+    private PhoneHolder phoneHolder;
 
 
     public Phone() {
@@ -40,12 +40,12 @@ public class Phone {
         this.number = number;
     }
 
-    public Person getPerson() {
-        return person;
+    public PhoneHolder getPhoneHolder() {
+        return phoneHolder;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setPhoneHolder(PhoneHolder phoneHolder) {
+        this.phoneHolder = phoneHolder;
     }
 
     @Override
