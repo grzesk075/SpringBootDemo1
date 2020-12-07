@@ -1,13 +1,16 @@
 package com.example.restservice;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Greeting {
 
     private final long id;
 
     //@JsonIgnore
     private final String content;
+
+    public Greeting(long id) {
+        this.id = id;
+        this.content = this.toString();
+    }
 
     public G1 getG() {
         return g;
