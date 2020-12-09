@@ -21,6 +21,8 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +33,8 @@ import javax.jms.ConnectionFactory;
 @RestController
 @EnableConfigurationProperties(StorageProperties.class)
 @EnableJms
+@EnableScheduling
+@EnableAsync
 public class DemoApplication {
 
     public static final Logger LOG = LoggerFactory.getLogger(DemoApplication.class);
