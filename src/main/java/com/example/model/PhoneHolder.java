@@ -18,6 +18,9 @@ public class PhoneHolder {
     @OneToMany(mappedBy = "phoneHolder", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones = new ArrayList<>();
 
+    @Version
+    private Integer version;
+
 
     public PhoneHolder() {
     }
@@ -37,6 +40,14 @@ public class PhoneHolder {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public void addPhone(Phone phone) {
