@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -26,9 +27,13 @@ public class ConsumingRestServiceApplication {
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) {
         return argsOfApp -> {
-            final Quote quote = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
-                    Quote.class);
-            LOG.info(quote.toString());
+            try {
+                final Quote quote = restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
+                        Quote.class);
+                LOG.info(quote.toString());
+            } catch (RestClientException e) {
+                e.printStackTrace();
+            }
             if (argsOfApp.length > 0) {
                 LOG.info(argsOfApp[0]);
             }
